@@ -37,11 +37,17 @@ while rodando:
     screen.blit(bg,(rel_x - bg.get_rect().width,0)) #cria background
     if rel_x < 1280:
         screen.blit(bg, (rel_x,0))
-   
+    tecla = pygame.key.get_pressed()
+    if tecla[pygame.K_UP] and pos_personagem_y > 1 :
+        pos_personagem_y -=1
+    if tecla[pygame.K_DOWN] and pos_personagem_y < 665 :
+        pos_personagem_y +=1
 
     x-=1 #movimento do fundo
 
 
+    screen.blit(inimigo,(pos_inimigo_x, pos_inimigo_y))
+    screen.blit(personagem, (pos_personagem_x, pos_personagem_y))
 
 
     pygame.display.update()
