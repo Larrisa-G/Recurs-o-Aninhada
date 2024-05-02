@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 x = 1280
@@ -26,6 +27,11 @@ pos_personagem_y = 300
 
 rodando = True
 
+def respawn():
+    x = 1350
+    y = random.randint(1, 640)
+    return [x,y]
+
 while rodando:
     for event in pygame.event.get(): #fecha ao clicar em X
         if event.type == pygame.QUIT:
@@ -37,20 +43,29 @@ while rodando:
     screen.blit(bg,(rel_x - bg.get_rect().width,0)) #cria background
     if rel_x < 1280:
         screen.blit(bg, (rel_x,0))
+    
+    #movimento personagem
     tecla = pygame.key.get_pressed()
     if tecla[pygame.K_UP] and pos_personagem_y > 1 :
-        pos_personagem_y -=1
+        pos_personagem_y -=velocidade_personagem 
     if tecla[pygame.K_DOWN] and pos_personagem_y < 665 :
-        pos_personagem_y +=1
-    if tecla[pygame.K_RIGHT] and pos_personagem_x > 1 :
-        pos_personagem_x +=1
-    if tecla[pygame.K_LEFT] and pos_personagem_x < 1275 :
-        pos_personagem_x -=1
+        pos_personagem_y +=velocidade_personagem 
+    if tecla[pygame.K_RIGHT] and pos_personagem_x < 1200 :
+        pos_personagem_x +=velocidade_personagem 
+    if tecla[pygame.K_LEFT] and pos_personagem_x  > 1 :
+        pos_personagem_x -= (velocidade_personagem + 0.5)
 
-    x-=1 #movimento do fundo
-    pos_inimigo_x -=1
+    #
+    if pos_inimigo_x == 50:
+        pos_inimigo_x = respawn()[0]
+        pos_inimigo_y = respawn()[1]
 
+    #velocidade dos movimentos
+    x-=1 
+    velocidade_personagem = 2
+    pos_inimigo_x -=5
 
+    #mostra na teal
     screen.blit(inimigo,(pos_inimigo_x, pos_inimigo_y))
     screen.blit(personagem, (pos_personagem_x, pos_personagem_y))
 
