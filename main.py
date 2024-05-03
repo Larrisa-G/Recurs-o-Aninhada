@@ -15,7 +15,7 @@ inimigo = pygame.image.load('./imagens/cat_idle.png').convert_alpha()
 inimigo = pygame.transform.scale(inimigo, (50,50))
 
 personagem = pygame.image.load('./imagens/cat_idle_small.png').convert_alpha()
-personagem = pygame.transform.scale(inimigo, (300,300))
+personagem = pygame.transform.scale(personagem, (300,300))
 personagem = pygame.transform.rotate(personagem, 0)
 
 luz = pygame.image.load('./imagens/luzt.png').convert_alpha()
@@ -80,12 +80,12 @@ while rodando:
     #luz
     if tecla[pygame.K_SPACE] :
         triggered = True
-        velocidade_luz = 1
+        velocidade_luz = +1
 
     #velocidade dos movimentos
     x-=1 
     velocidade_personagem = 2
-    pos_inimigo_x -=2
+    pos_inimigo_x -=5
     pos_luz_x +=velocidade_luz
 
     #mostra na teal
