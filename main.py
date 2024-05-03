@@ -28,7 +28,7 @@ pos_inimigo_y = 360
 pos_personagem_x = 200
 pos_personagem_y = 300
 
-pos_luz_x = 400
+pos_luz_x = 200
 pos_luz_y = 300
 velocidade_luz = 0
 
@@ -55,23 +55,19 @@ while rodando:
     #movimento personagem
     tecla = pygame.key.get_pressed()
     if tecla[pygame.K_UP] and pos_personagem_y > 1 :
-        pos_personagem_y -=velocidade_personagem 
-        pos_luz_y -=velocidade_personagem 
+        pos_personagem_y -=velocidade_personagem
         if not triggered :
             pos_luz_x -= velocidade_personagem
     if tecla[pygame.K_DOWN] and pos_personagem_y < 665 :
         pos_personagem_y +=velocidade_personagem 
-        pos_luz_y +=velocidade_personagem 
         if not triggered :
             pos_luz_x += velocidade_personagem
     if tecla[pygame.K_RIGHT] and pos_personagem_x < 1200 :
         pos_personagem_x +=velocidade_personagem 
-        pos_luz_x +=velocidade_personagem 
         if not triggered :
             pos_luz_x += velocidade_personagem
     if tecla[pygame.K_LEFT] and pos_personagem_x  > 1 :
         pos_personagem_x -= (velocidade_personagem + 0.5)
-        pos_luz_x -= (velocidade_personagem + 0.5)
         if not triggered :
             pos_luz_x -= velocidade_personagem
 
@@ -85,8 +81,6 @@ while rodando:
     if tecla[pygame.K_SPACE] :
         triggered = True
         velocidade_luz = 1
-    
-   
 
     #velocidade dos movimentos
     x-=1 
