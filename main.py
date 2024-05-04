@@ -33,10 +33,10 @@ class Projetil(pygame.sprite.Sprite) :
     def __init__(self, posx, posy) :
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('./imagens/luzt.png').convert_alpha()
+        self.image = pygame.transform.scale(self.image, (25,25))
         self.rect = self.image.get_rect()
-        self.velocidade = 5
         self.rect.center = (posx,posy)
-        self.velocidadade = 5
+        self.velocidadade = -5
 
     def update(self) :
         self.rect.x = self.rect.x - self.velocidadade
