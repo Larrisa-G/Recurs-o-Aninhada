@@ -90,8 +90,8 @@ while rodando:
 
     #Atualização e desenho do projétil de luz
     if triggered:
-        all_sprites.update()
-        all_sprites.draw(screen)
+        proj_luz.update()
+        screen.blit(proj_luz.image, proj_luz.rect)
 
     #mostra na teal
     screen.blit(inimigo,(pos_inimigo_x, pos_inimigo_y))
